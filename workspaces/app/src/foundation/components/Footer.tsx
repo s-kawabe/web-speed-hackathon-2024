@@ -113,7 +113,7 @@ export const Footer: React.FC = () => {
     <Box as="footer" backgroundColor={Color.Background} p={Space * 1}>
       <Flex align="flex-start" direction="column" gap={Space * 1} justify="flex-start">
         {/* TODO: webpにする？ */}
-        <img alt="Cyber TOON" src="/assets/cyber-toon.svg" />
+        <img alt="Cyber TOON" src="/assets/cyber-toon.webp" />
         <Flex align="start" direction="row" gap={Space * 1.5} justify="center">
           <_Button disabled={!isClient} onClick={handleRequestToTermDialogOpen}>
             利用規約
