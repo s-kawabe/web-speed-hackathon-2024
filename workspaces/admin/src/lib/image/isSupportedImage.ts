@@ -4,6 +4,7 @@ import { Magika } from 'magika';
 const SUPPORTED_MAGIKA_LABEL_LIST = ['bmp', 'jpeg', 'png', 'webp'];
 const SUPPORTED_MIME_TYPE_LIST = ['image/bmp', 'image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/jxl'];
 
+// TODO: 消したい
 const magika = new Magika();
 
 const initMagikaPromise = magika.load({
