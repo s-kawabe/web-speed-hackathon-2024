@@ -8,12 +8,13 @@ const _Wrapper = styled.div`
 const _Image = styled.img`
   display: inline-block;
   width: 100%;
+  height: auto;
 `;
 
 export const HeroImage: React.FC = () => {
   return (
     <_Wrapper>
-      <_Image alt="Cyber TOON" src={'/assets/heroimage.webp'} />
+      <_Image alt="Cyber TOON" height="576" src={'/assets/heroimage.webp'} width="1024" />
     </_Wrapper>
   );
 };
