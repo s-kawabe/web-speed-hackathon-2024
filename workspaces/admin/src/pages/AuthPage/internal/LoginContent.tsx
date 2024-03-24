@@ -1,6 +1,6 @@
 import { Box, Button, FormControl, FormErrorMessage, FormLabel, Heading, Input, Spacer, Stack } from '@chakra-ui/react';
 import { useFormik } from 'formik';
-import { useId } from 'react';
+import { useCallback, useId } from 'react';
 import * as yup from 'yup';
 
 import { useLogin } from '../../../features/auth/hooks/useLogin';
@@ -18,22 +18,30 @@ export const LoginContent: React.FC = () => {
       login.mutate({ email: values.email, password: values.password });
     },
     validationSchema: yup.object().shape({
-      email: yup
-        .string()
-        .required('メールアドレスを入力してください')
-        .test({
-          message: 'メールアドレスには @ を含めてください',
-          test: (v) => /^(?:[^@]*){12,}$/v.test(v) === false,
-        }),
+      email: yup.string().required('メールアドレスを入力してください').email('メールアドレスには @ を含めてください'),
       password: yup
         .string()
         .required('パスワードを入力してください')
         .test({
           message: 'パスワードには記号を含めてください',
-          test: (v) => /^(?:[^\P{Letter}&&\P{Number}]*){24,}$/v.test(v) === false,
+          test: (v) => /^(?=.*?[!@#$%^&*(),.?":{}|<>]).{8,}$/.test(v),
         }),
     }),
   });
+
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      formik.handleChange(e);
+    },
+    [formik],
+  );
+
+  const handleBlur = useCallback(
+    (e: React.FocusEvent<HTMLInputElement>) => {
+      formik.handleBlur(e);
+    },
+    [formik],
+  );
 
   return (
     <Box
@@ -56,8 +64,8 @@ export const LoginContent: React.FC = () => {
             bgColor="white"
             borderColor="gray.300"
             name="email"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
+            onBlur={handleBlur}
+            onChange={handleChange}
             placeholder="メールアドレス"
           />
           <FormErrorMessage role="alert">{formik.errors.email}</FormErrorMessage>
@@ -69,8 +77,8 @@ export const LoginContent: React.FC = () => {
             bgColor="white"
             borderColor="gray.300"
             name="password"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
+            onBlur={handleBlur}
+            onChange={handleChange}
             placeholder="パスワード"
             type="password"
           />
