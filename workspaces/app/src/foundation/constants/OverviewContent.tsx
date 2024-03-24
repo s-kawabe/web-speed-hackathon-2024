@@ -1,5 +1,16 @@
 /* eslint-disable no-irregular-whitespace */
-export const OVERVIEW = `
+import { Text } from '../components/Text';
+import { Color, Typography } from '../styles/variables';
+
+export default function OverviewContent() {
+  return (
+    <Text as="p" color={Color.MONO_100} typography={Typography.NORMAL12}>
+      {OVERVIEW}
+    </Text>
+  )
+}
+
+const OVERVIEW = `
 こころ
 夏目漱石
 

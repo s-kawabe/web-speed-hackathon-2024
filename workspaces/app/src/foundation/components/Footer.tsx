@@ -1,13 +1,8 @@
 import { useSetAtom } from 'jotai';
-import React, { useId } from 'react';
+import React, { lazy, Suspense, useId } from 'react';
 import styled from 'styled-components';
 
 import { DialogContentAtom } from '../atoms/DialogContentAtom';
-import { COMPANY } from '../constants/Company';
-import { CONTACT } from '../constants/Contact';
-import { OVERVIEW } from '../constants/Overview';
-import { QUESTION } from '../constants/Question';
-import { TERM } from '../constants/Term';
 import { Color, Space, Typography } from '../styles/variables';
 
 import { Box } from './Box';
@@ -15,6 +10,12 @@ import { Button } from './Button';
 import { Flex } from './Flex';
 import { Spacer } from './Spacer';
 import { Text } from './Text';
+
+const TermContent = lazy(() => import('../constants/TermContent'));
+const CompanyContent = lazy(() => import('../constants/CompanyContent'));
+const ContactContent = lazy(() => import('../constants/ContatContent'));
+const OverviewContent = lazy(() => import('../constants/OverviewContent'));
+const QuestionContent = lazy(() => import('../constants/QuestionContent'));
 
 const _Button = styled(Button)`
   color: ${Color.MONO_A};
@@ -47,7 +48,9 @@ export const Footer: React.FC = () => {
         </Text>
         <Spacer height={Space * 1} />
         <Text as="p" color={Color.MONO_100} typography={Typography.NORMAL12}>
-          {TERM}
+          <Suspense fallback={null}>
+            <TermContent />
+          </Suspense>
         </Text>
       </_Content>,
     );
@@ -61,7 +64,9 @@ export const Footer: React.FC = () => {
         </Text>
         <Spacer height={Space * 1} />
         <Text as="p" color={Color.MONO_100} typography={Typography.NORMAL12}>
-          {CONTACT}
+          <Suspense fallback={null}>
+            <ContactContent />
+          </Suspense>
         </Text>
       </_Content>,
     );
@@ -75,7 +80,9 @@ export const Footer: React.FC = () => {
         </Text>
         <Spacer height={Space * 1} />
         <Text as="p" color={Color.MONO_100} typography={Typography.NORMAL12}>
-          {QUESTION}
+          <Suspense fallback={null}>
+            <QuestionContent />
+          </Suspense>
         </Text>
       </_Content>,
     );
@@ -89,7 +96,9 @@ export const Footer: React.FC = () => {
         </Text>
         <Spacer height={Space * 1} />
         <Text as="p" color={Color.MONO_100} typography={Typography.NORMAL12}>
-          {COMPANY}
+          <Suspense fallback={null}>
+            <CompanyContent />
+          </Suspense>
         </Text>
       </_Content>,
     );
@@ -103,7 +112,9 @@ export const Footer: React.FC = () => {
         </Text>
         <Spacer height={Space * 1} />
         <Text as="p" color={Color.MONO_100} typography={Typography.NORMAL12}>
-          {OVERVIEW}
+          <Suspense fallback={null}>
+            <OverviewContent />
+          </Suspense>
         </Text>
       </_Content>,
     );

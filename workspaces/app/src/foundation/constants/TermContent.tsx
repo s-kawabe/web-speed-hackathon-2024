@@ -1,5 +1,17 @@
+import { Text } from '../components/Text';
+import { Color, Typography } from '../styles/variables';
+
 /* eslint-disable no-irregular-whitespace */
-export const TERM = `
+
+export default function TermContent() {
+  return (
+    <Text as="p" color={Color.MONO_100} typography={Typography.NORMAL12}>
+      {TERM}
+    </Text>
+  );
+}
+
+const TERM = `
 罪と罰
 フョードル・ミハイロヴィッチ・ドストエフスキー
 米川正夫訳

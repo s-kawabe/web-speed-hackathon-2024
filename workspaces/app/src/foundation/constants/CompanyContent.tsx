@@ -1,5 +1,16 @@
 /* eslint-disable no-irregular-whitespace */
-export const COMPANY = `
+import { Text } from '../components/Text';
+import { Color, Typography } from '../styles/variables';
+
+export default function CompanyContent() {
+  return (
+    <Text as="p" color={Color.MONO_100} typography={Typography.NORMAL12}>
+      {COMPANY}
+    </Text>
+  );
+}
+
+const COMPANY = `
 吾輩は猫である
 夏目漱石
 
