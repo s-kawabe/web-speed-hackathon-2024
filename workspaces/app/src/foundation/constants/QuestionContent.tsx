@@ -1,5 +1,16 @@
 /* eslint-disable no-irregular-whitespace */
-export const QUESTION = `
+import { Text } from '../components/Text';
+import { Color, Typography } from '../styles/variables';
+
+export default function QuestionContent() {
+  return (
+    <Text as="p" color={Color.MONO_100} typography={Typography.NORMAL12}>
+      {QUESTION}
+    </Text>
+  );
+}
+
+const QUESTION = `
 ドグラ・マグラ
 夢野久作
 

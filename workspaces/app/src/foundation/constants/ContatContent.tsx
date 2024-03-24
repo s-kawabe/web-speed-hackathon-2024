@@ -1,5 +1,16 @@
 /* eslint-disable no-irregular-whitespace */
-export const CONTACT = `
+import { Text } from '../components/Text';
+import { Color, Typography } from '../styles/variables';
+
+export default function ContactContent() {
+  return (
+    <Text as="p" color={Color.MONO_100} typography={Typography.NORMAL12}>
+      {CONTACT}
+    </Text>
+  );
+}
+
+const CONTACT = `
 パソコン創世記
 富田倫生
 
